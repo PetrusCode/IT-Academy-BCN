@@ -7,4 +7,6 @@ import exercise2_poo_model.Hotel;
 public interface HotelBl {
 
 	public boolean crear(Hotel hotel) throws IOException;
+
+	public void calcularManteniment();
 }

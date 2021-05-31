@@ -48,7 +48,10 @@ public class Principal {
 		 * Haremos la modificación pertinente y avisaremos al usuario que la
 		 * modificación se ha realizado.
 		 */
+		System.out.println(System.getProperty("java.version"));
+
 		Menu.hotelMenu();
+
 	}
 
 }

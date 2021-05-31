@@ -9,10 +9,12 @@ import exercise2_poo_model.EnumHotel;
 import exercise2_poo_model.Hotel;
 import exercise2_poo_model_business.HotelBlImpl;
 import exercise2_poo_model_business_contracts.HotelBl;
+import exercise2_poo_model_dao.HotelDaoImpl;
 
 public class Menu {
 
 	public static void hotelMenu() throws IOException {
+		HotelDaoImpl hotelDao = new HotelDaoImpl();
 		HotelBl hotelBl = new HotelBlImpl();
 		Scanner scanner = new Scanner(System.in);
 		EnumHotel enumHotel = null;
@@ -24,6 +26,7 @@ public class Menu {
 				opcion = Integer.parseInt(JOptionPane
 						.showInputDialog("Elija una opcion porfavor ?"
 								+ "\n 1.Crear Hotel \n 2.CalcularMantenimiento \n 3.Dar de baja un hotel \n 4.Mostrar Hotel \n 5.Modificar Hotel \n 6.Salir"));
+
 			} catch (Exception e) {
 				System.out.println("Introduzca un numero " + e.getMessage());
 			}
@@ -34,12 +37,34 @@ public class Menu {
 				Hotel hotel = new Hotel();
 				crearHotel(hotel, scanner);
 				hotelBl.crear(hotel);
+				break;
+
+			case CALCULAR_MANTENIMIENTO:
+
+				hotelBl.calcularManteniment();
+				break;
+			case DAR_DE_BAJA_UNHOTEL:
+				hotelDao.donarDeBaixaHotel();
+				break;
+			case MOSTRAR_HOTEL:
+				hotelDao.veureHotelDao();
+				break;
+			case MODIFICAR_HOTEL:
+				hotelDao.modificarHotel();
+
+				break;
+
+			default:
+				break;
 			}
 		} while (opcion != EnumHotel.EXIT.value());
+		System.out.println("Salir");
+		scanner.close();
+
 	}
 
 	public static void crearHotel(Hotel hotel, Scanner scanner) {
-
+		char caracter = '\u00B2';
 		System.out
 				.println("Creando nuevo hotel. Presione ENTER para continuar");
 		scanner.nextLine();
@@ -55,7 +80,7 @@ public class Menu {
 		hotel.setNumeroDePlantas(Integer.parseInt(scanner.nextLine()));
 
 		System.out.println("Superficie total del hotel");
-		hotel.setSuperficieTotalHotel(Integer.parseInt(scanner.nextLine()));
+		hotel.setSuperficieTotalHotel(scanner.next().concat("m" + caracter));
 
 		/*
 		 * El método crearHotel () deberá pedir al usuario que introduzca por
@@ -65,4 +90,5 @@ public class Menu {
 		 * de hoteles.
 		 */
 	}
+
 }

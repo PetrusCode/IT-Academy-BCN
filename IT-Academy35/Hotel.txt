@@ -1,0 +1,2 @@
+Hotel [nombre=SagradaFamiliaHotel, numeroHabitaciones=300, numeroDePlantas=4, superficieTotalHotel=300m²]
+Hotel [nombre=MujolHotelSL, numeroHabitaciones=220, numeroDePlantas=3, superficieTotalHotel=230m²]
