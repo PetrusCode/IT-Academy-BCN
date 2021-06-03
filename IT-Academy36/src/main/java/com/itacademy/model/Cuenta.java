@@ -1,5 +1,9 @@
 package com.itacademy.model;
 
+import java.math.BigDecimal;
+
+import com.itacademy.exceptions.DineroInsuficienteException;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,17 +12,19 @@ import lombok.NoArgsConstructor;
 public class Cuenta {
 
 	private Integer numCuenta;
-	private Integer saldo;
+	private BigDecimal saldo;
 
-	int ingresar(Integer cantidad) {
+	public BigDecimal ingresar(BigDecimal cantidad) {
 
-		return cantidad;
-
+		return this.saldo = cantidad.add(cantidad);
 	}
 
-	int retirar(Integer cantidad) {
-
-		return cantidad;
+	public void retirar(BigDecimal cantidad) {
+		BigDecimal saldoNuevo = this.saldo.subtract(cantidad);
+		if (saldoNuevo.compareTo(BigDecimal.ZERO) < 0) {
+			throw new DineroInsuficienteException("Dinero insuficiente");
+		}
+		this.saldo = saldoNuevo;
 
 	}
 }
