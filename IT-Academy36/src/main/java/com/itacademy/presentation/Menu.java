@@ -27,7 +27,7 @@ public class Menu {
 			System.out.println(
 					"Seleccione una opcion: \n 1.Crear Cliente \n 2.Crear Cuenta de un Cliente"
 							+ "\n 3.mostrarCliente \n 4.eliminarCliente \n 5.mostrarCuentaCliente \n 6.mostrarLasCuentasCliente"
-							+ "\n 7.eliminarUnaCuentadeUnCliente \n 8.IngresarEurosCuentaCliente \n 9.retirarEurosCuentaCliente");
+							+ "\n 7.eliminarUnaCuentadeUnCliente \n 8.IngresarEurosCuentaCliente \n 9.retirarEurosCuentaCliente \n 0.Salir");
 			opcion = scanner.nextInt();
 			switch (opcion) {
 			case 1:
@@ -70,12 +70,15 @@ public class Menu {
 				retirarEurosCuentaCliente();
 
 				break;
-
+			case 0:
+				System.out.println("Salir");
+				scanner.close();
+				break;
 			default:
 				scanner.close();
 			}
 		} while (opcion != 0);
-		scanner.close();
+
 	}
 
 	static boolean crearCliente(Cliente cliente, ArrayList<Cuenta> cuentas) {
